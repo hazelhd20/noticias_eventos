@@ -1,0 +1,404 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color1: #333;
+  --color2: #007BFF;
+  --color3: #ffffff;
+  --color4: #1B396A;
+  --color5: #33cc33e2;
+  --color6: #ef1c1cf4;
+  --color7: #fff;
+  --color8: #ff9900;
+  --color9: #d6d3d3;
+  --color10: #3a3939;
+  --color11: #727171;
+  --color12: #f6f7fa;
+  /*Color para hover elementos en blanco*/
+  --color13: #f3ebeb6b;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5; /* 24px */
+  background-color: var(--color12);
+}
+
+.form {
+  border: 1px var(--color9) solid;
+  padding: 35px 50px;
+  border-radius: 10px;
+  background-color: var(--color3);
+}
+
+.ancho {
+  width: 1200px;
+  margin:auto; /*centrar caja*/
+}
+
+/* Css general formularios */
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.columna {
+  flex: 1;
+}
+
+.verde {
+  background-color: var(--color5);
+}
+
+.rojo {
+  background-color: var(--color6);
+}
+
+.azul {
+  background-color: var(--color4);
+}
+
+.naranja {
+  background-color: var(--color8);
+}
+
+.gris {
+  background-color: var(--color10);
+}
+
+/* Estilo general para etiquetas */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  font-size: 14px;
+  color: var(--color10);
+}
+
+/* Estilo para inputs de texto */
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid var(--color9);
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color2);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input:hover {
+  background-color: var(--color13);
+}
+
+/*---------------------------------------------------------------- */
+.contenedor_logo {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.contenedor_logo img {
+  max-width: 300px;
+  height: auto;
+  margin-top: 30px;
+}
+
+.formulario {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: var(--color3);
+  background-color: var(--color6);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.cont_form {
+  width: 380px;
+  margin: auto;
+  text-align: center;
+  border: 1px solid var(--color9);
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: var(--color3);
+}
+
+.cont_form h3 {
+  margin-bottom: 15px;
+}
+
+.boton {
+  color: var(--color3);
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* Panel */
+.contenedor {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.barra {
+  width: 18%;
+  height: 100vh;
+  background-color: var(--color7);
+  font-size: 1.1rem;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--color9);
+}
+
+.barra ul {
+  list-style-type: none;
+}
+
+.barra ul li {
+  padding: 10px;
+}
+
+.barra ul li a {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los íconos con el texto */
+  gap: 15px; /* Espacio entre el ícono y el texto */
+  color: var(--color11);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.barra ul li a i {
+  width: 20px; /* Asegura que todos los íconos tengan el mismo ancho */
+  text-align: center;
+}
+
+.barra ul li:hover {
+  background-color: var(--color13);
+}
+
+.barra ul li:hover a {
+  color: var(--color4);
+}
+
+.logo_barra {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo_barra img {
+  width: 65%;
+}
+
+.btn_salir {
+  text-align: center;
+  margin-top: auto;
+}
+
+.btn_salir a {
+  display: inline-block;
+  padding: 10px 15px;
+  color: var(--color3);
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.contenido1 {
+  width: 82%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 30px 50px;
+  border-radius: 5px;
+  background-color: var(--color12);
+}
+
+.contenido1 h3 {
+  margin-bottom: 10px;
+}
+
+.contenido1 img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+  height: 79%;
+  object-fit: cover;
+}
+
+.contenedor_btn {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.centrar {
+  text-align: center;
+}
+
+.boton1 {
+  color: var(--color3);
+  padding: 6px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.contenedor_cuadros {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tot_usuarios {
+  width: 25%;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  color: var(--color3);
+}
+
+/* Ver usuarios */
+.contenido2 {
+  width: 82%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: white;
+  padding: 30px 50px;
+  border-radius: 5px;
+  background-color: var(--color12);
+}
+
+.contenido2 h3 {
+  margin-bottom: 10px;
+}
+
+.contenido2 img {
+  width: 62%;
+  border-radius: 10px;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  max-width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+  border-collapse: collapse;
+  margin: 0 auto; /* Centrar la tabla dentro del contenedor */
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* Efecto hover */
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Mensaje sin datos */
+.no-datos {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.eliminar {
+  color: white;
+  background-color: #ff0000ac;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.editar {
+  color: white;
+  background-color: #ffcc00;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.ver {
+  color: white;
+  background-color: #88ff00;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.info_usuario {
+  padding: 10px;
+}
+
+.info_usuario p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.info_usuario p strong {
+  color: #222;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.izq {
+  text-align: left;
+}
+
+.boton_circular {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: var(--color10);
+  border: 1px #ccc solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.correo_usuario {
+  color: var(--color11);
+  font-size: 0.8em;
+}
