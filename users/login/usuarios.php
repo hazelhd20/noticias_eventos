@@ -20,7 +20,7 @@ require 'seguridad.php';
     <div class="contenido2">
       <h2 class="centrar">Agregar usuarios</h2>
       <?php include 'botones_usuario.php' ?>
-      <form action="agregar_usuario.php" method="post" id="frmRegis" class="form">
+      <form action="agregar_usuario.php" method="post" id="frmRegis" class="form pd">
         <div class="fila">
           <div class="columna">
             <input type="hidden" name="formulario" value="interno">

@@ -10,8 +10,8 @@ $usuario = $_SESSION['username'];
   </div>
   <ul>
     <li><a href="principal.php"><i class="fas fa-home"></i>Inicio</a></li>
-    <li><a href="usuarios.php"><i class="fas fa-users"></i>Usuarios</a></li>
-    <li><a href="posts.php"><i class="fas fa-book-open"></i>Posts</a></li>
+    <li><a href="lista_usuarios.php"><i class="fas fa-users"></i>Usuarios</a></li>
+    <li><a href="lista_posts.php"><i class="fas fa-book-open"></i>Posts</a></li>
     <li><a href="#"><i class="fas fa-user-tie"></i>Opcion 4</a></li>
     <li><a href="#"><i class="fas fa-file-signature"></i>Opcion 5</a></li>
   </ul>

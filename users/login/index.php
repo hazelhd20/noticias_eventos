@@ -18,9 +18,15 @@ require 'sesion_activa.php';
   <form action="autenticar.php" method="post" class="cont_form" id="frmSes">
     <h3>Accede al sistema</h3>
     <?php
-    $errorusuario = isset($_GET["errorusuario"]);
-    if ($errorusuario == "SI") {
-      echo "<p id='errorMensaje' class='error'>Correo o contraseña incorrectos</p>";
+    if (isset($_GET["errorusuario"])) {
+      $error = $_GET["errorusuario"];
+      if ($error == "SI") {
+        echo "<p id='errorMensaje' class='error'>Correo o contraseña incorrectos</p>";
+      } elseif ($error == "VACIO") {
+        echo "<p id='errorMensaje' class='error'>Por favor, llena todos los campos</p>";
+      } elseif ($error == "NOPOST") {
+        echo "<p id='errorMensaje' class='error'>Acceso no autorizado</p>";
+      }
     }
     ?>
     <div class="fila">
@@ -76,4 +82,3 @@ require 'sesion_activa.php';
     document.getElementById("frmSes").submit();
   });
 </script>
-

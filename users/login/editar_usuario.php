@@ -16,7 +16,7 @@ require 'seguridad.php';
 <body>
   <div class="contenedor">
     <?php include 'barra.php'; ?>
-    <div class="contenido1">
+    <div class="contenido2">
       <h2 class="centrar mb16"><i class='fas fa-edit'></i> Editar usuario</h2>
       <?php
       require "conexion.php";
@@ -27,7 +27,7 @@ require 'seguridad.php';
       $fila = $resultado->fetch_array();
       ?>
       <form action="actualizar_usuario.php" method="post" id="frmEditar" class="form">
-        <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+        <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
 
         <div class="fila">
           <div class="columna">
