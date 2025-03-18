@@ -15,52 +15,49 @@ require 'seguridad.php';
 
 <body>
   <div class="contenedor">
+
     <?php include 'barra.php'; ?>
+
     <div class="contenido2">
       <h2 class="centrar mb16"><i class='fas fa-edit'></i> Editar usuario</h2>
+
       <?php
       require "conexion.php";
       $id_usuario = $_GET['id'];
-
-      $verusuario = "SELECT * FROM usuarios WHERE id = '$id_usuario'";
+      $verusuario = "SELECT * FROM usuarios WHERE id_usuario = '$id_usuario'";
       $resultado = mysqli_query($conectar, $verusuario);
       $fila = $resultado->fetch_array();
       ?>
+
       <form action="actualizar_usuario.php" method="post" id="frmEditar" class="form">
-        <input type="hidden" name="id" value="<?php echo $fila['id']; ?>">
-
+        <input type="hidden" name="id_usuario" value="<?php echo $fila['id_usuario']; ?>">
         <div class="fila">
           <div class="columna">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="<?php echo $fila['nombre']; ?>" required>
+            <label for="nombre_usuario">Nombre:</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($fila['nombre_usuario']); ?>" required>
           </div>
           <div class="columna">
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" value="<?php echo $fila['apellido']; ?>" required>
+            <label for="apellido_usuario">Apellido:</label>
+            <input type="text" id="apellido_usuario" name="apellido_usuario" value="<?php echo htmlspecialchars($fila['apellido_usuario']); ?>" required>
           </div>
         </div>
-
         <div class="fila">
           <div class="columna">
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" disabled value="<?php echo $fila['correo']; ?>" required>
+            <label for="correo_usuario">Correo:</label>
+            <input type="email" id="correo_usuario" name="correo_usuario" value="<?php echo htmlspecialchars($fila['correo_usuario']); ?>" disabled required>
           </div>
           <div class="columna">
-            <label for="contra">Contraseña:</label>
-            <input type="password" id="contra" name="contra" disabled maxlength="10" value="<?php echo $fila['contra']; ?>" required>
+            <label for="contra_usuario">Nueva Contraseña (opcional):</label>
+            <input type="password" id="contra_usuario" name="contra_usuario" maxlength="10">
           </div>
         </div>
-
         <div class="fila">
           <div class="columna">
-            <label for="nacimiento">Fecha de nacimiento</label>
-            <input type="date" id="nacimiento" name="nacimiento" value="<?php echo $fila['nacimiento']; ?>" required>
-            <input type="hidden" name="id_usuario" value="<?php echo $fila['id']; ?>">
-            <input type="hidden" name="correo" value="<?php echo $fila['correo']; ?>">
+            <label for="nacimiento_usuario">Fecha de nacimiento:</label>
+            <input type="date" id="nacimiento_usuario" name="nacimiento_usuario" value="<?php echo htmlspecialchars($fila['nacimiento_usuario']); ?>" required>
           </div>
         </div>
-
-        <button class="boton gris" id="btn_validar" type="button">Actualizar usuario</button>
+        <button class="boton gris" id="btn_validar" type="submit">Actualizar usuario</button>
       </form>
       <a href="lista_usuarios.php" class="boton_circular">
         <i class="fas fa-arrow-left"></i>
@@ -75,11 +72,11 @@ require 'seguridad.php';
   document.getElementById("btn_validar").addEventListener("click", function(event) {
     event.preventDefault();
 
-    const nombre = document.getElementById("nombre");
-    const apellido = document.getElementById("apellido");
-    const correo = document.getElementById("correo");
-    const contra = document.getElementById("contra");
-    const nacimiento = document.getElementById("nacimiento");
+    const nombre_usuario = document.getElementById("nombre_usuario");
+    const apellido_usuario = document.getElementById("apellido_usuario");
+    const correo_usuario = document.getElementById("correo_usuario");
+    const contra_usuario = document.getElementById("contra_usuario");
+    const nacimiento_usuario = document.getElementById("nacimiento_usuario");
 
     const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -92,16 +89,14 @@ require 'seguridad.php';
       return false;
     }
 
-    if (verificarCampo(nombre, "Por favor, introduzca su nombre.")) return;
-    if (verificarCampo(apellido, "Por favor, introduzca su apellido.")) return;
-    if (verificarCampo(correo, "Por favor, introduzca un correo.")) return;
-    if (verificarCampo(contra, "Por favor, introduzca una contraseña.")) return;
-    if (!correoRegex.test(correo.value.trim())) {
+    if (verificarCampo(nombre_usuario, "Por favor, introduzca su nombre.")) return;
+    if (verificarCampo(apellido_usuario, "Por favor, introduzca su apellido.")) return;
+    if (!correoRegex.test(correo_usuario.value.trim())) {
       alert("Por favor, introduzca un correo válido.");
-      correo.focus();
+      correo_usuario.focus();
       return;
     }
-    if (verificarCampo(nacimiento, "Por favor, seleccione su fecha de nacimiento.")) return;
+    if (verificarCampo(nacimiento_usuario, "Por favor, seleccione su fecha de nacimiento.")) return;
 
     document.getElementById("frmEditar").submit();
   });

@@ -30,10 +30,10 @@ require 'sesion_activa.php';
     }
     ?>
     <div class="fila">
-      <input type="text" id="correo" name="correo" required placeholder="Correo">
+      <input type="text" id="correo_usuario" name="correo_usuario" required placeholder="Correo">
     </div>
     <div class="fila">
-      <input type="password" id="contra" name="contra" required placeholder="Contraseña">
+      <input type="password" id="contra_usuario" name="contra_usuario" required placeholder="Contraseña">
     </div>
     <button class="boton azul" id="btn_validar" type="button">Iniciar sesión</button>
   </form>
@@ -42,14 +42,14 @@ require 'sesion_activa.php';
 </html>
 
 <script>
-  document.getElementById('correo').addEventListener('input', function() {
+  document.getElementById('correo_usuario').addEventListener('input', function() {
     let errorMensaje = document.getElementById('errorMensaje');
     if (errorMensaje) {
       errorMensaje.style.display = 'none';
     }
   });
 
-  document.getElementById('contra').addEventListener('input', function() {
+  document.getElementById('contra_usuario').addEventListener('input', function() {
     let errorMensaje = document.getElementById('errorMensaje');
     if (errorMensaje) {
       errorMensaje.style.display = 'none';
@@ -61,8 +61,8 @@ require 'sesion_activa.php';
     event.preventDefault();
 
     // Obtener los valores de los campos de entrada y selección
-    const correo = document.getElementById("correo");
-    const contra = document.getElementById("contra");
+    const correo_usuario = document.getElementById("correo_usuario");
+    const contra_usuario = document.getElementById("contra_usuario");
 
     // Función para verificar si un campo está vacío
     function verificarCampo(campo, mensaje) {
@@ -75,8 +75,8 @@ require 'sesion_activa.php';
     }
 
     // Verificar todos los campos
-    if (verificarCampo(correo, "Por favor, introduzca su correo.")) return;
-    if (verificarCampo(contra, "Por favor, introduzca su contraseña.")) return;
+    if (verificarCampo(correo_usuario, "Por favor, introduzca su correo.")) return;
+    if (verificarCampo(contra_usuario, "Por favor, introduzca su contraseña.")) return;
 
     // Si todos los campos están llenos, se envía el formulario
     document.getElementById("frmSes").submit();

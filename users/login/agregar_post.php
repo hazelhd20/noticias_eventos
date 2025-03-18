@@ -1,38 +1,29 @@
 <?php
 require "conexion.php";
 
-$nombreNoticia = $_POST['nombreNoticia'];
-$fechaNoticia = $_POST['fechaNoticia'];
-$descripcionCorta = $_POST['descripcionCorta'];
-$descripcionLarga = $_POST['editor1'];
+$nombre_noticia = $_POST['nombre_noticia'];
+$fecha_noticia = $_POST['fecha_noticia'];
+$descripcion_corta = $_POST['descripcion_corta'];
+$descripcion_larga = $_POST['editor1'];
 
-$nombreImagen = $_FILES['fotoNoticia']['name'];
-$pesoFoto = $_FILES['fotoNoticia']['size'];
-$tipoFoto = $_FILES['fotoNoticia']['type'];
+$nombre_imagen = $_FILES['foto_noticia']['name'];
+$peso_foto = $_FILES['foto_noticia']['size'];
+$tipo_foto = $_FILES['foto_noticia']['type'];
 
 
 // Datos de la foto
-$rutaServidor = 'fotos';
+$ruta_servidor = 'fotos';
 
-$rutaTemporal = $_FILES['fotoNoticia']['tmp_name'];
+$ruta_temporal = $_FILES['foto_noticia']['tmp_name'];
 
 // Para que no se sobreescriban los nombres de las fotos
 date_default_timezone_set('UTC');
-$nombreImagenUnico = date("Y-m-d-H-m-s") . "-" .  $nombreImagen;
+$nombre_imagen_unico = date("Y-m-d-H-m-s") . "-" .  $nombre_imagen;
 
-$rutaDestino = $rutaServidor . "/" . $nombreImagenUnico;
+$ruta_destino = $ruta_servidor . "/" . $nombre_imagen_unico;
 
-if ($pesoFoto > 999999) {
-  echo
-  '<script>
-      alert("Es demasiado pesada la foto para el post");
-      window.history.go(-1);
-  </script>';
-  exit();
-}
-
-if ($tipoFoto == "image/jpeg" or $tipoFoto == "image/png" or $tipoFoto == "image/gif" or $tipoFoto == "image/jpg" or $nombreImagen == "") {
-  if (!move_uploaded_file($rutaTemporal, $rutaDestino)) {
+if ($tipo_foto == "image/jpeg" or $tipo_foto == "image/png" or $tipo_foto == "image/gif" or $tipo_foto == "image/jpg" or $nombre_imagen == "") {
+  if (!move_uploaded_file($ruta_temporal, $ruta_destino)) {
     $error = error_get_last();
     echo "Error al mover el archivo: " . $error['message'];
     exit();
@@ -47,7 +38,16 @@ if ($tipoFoto == "image/jpeg" or $tipoFoto == "image/png" or $tipoFoto == "image
   exit();
 }
 
-$insertar = "INSERT INTO noticias(nombreNoticia, fechaNoticia, descripcionCorta, descripcionLarga, 	rutaFoto) VALUES ('$nombreNoticia', '$fechaNoticia', '$descripcionCorta', '$descripcionLarga', '$rutaDestino')";
+if ($peso_foto > 999999) {
+  echo
+  '<script>
+      alert("Es demasiado pesada la foto para el post");
+      window.history.go(-1);
+  </script>';
+  exit();
+}
+
+$insertar = "INSERT INTO noticias(nombre_noticia, fecha_noticia, descripcion_corta, descripcion_larga, 	ruta_foto) VALUES ('$nombre_noticia', '$fecha_noticia', '$descripcion_corta', '$descripcion_larga', '$ruta_destino')";
 
 $query = mysqli_query($conectar, $insertar);
 

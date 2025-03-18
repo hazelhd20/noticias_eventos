@@ -26,7 +26,7 @@ require "conexion.php";
 
       <?php
       // Realizamos la consulta a la base de datos
-      $datos = "SELECT * FROM usuarios ORDER BY id ASC";
+      $datos = "SELECT * FROM noticias ORDER BY id_noticia ASC";
       $resultado = mysqli_query($conectar, $datos);
       ?>
 
@@ -37,10 +37,9 @@ require "conexion.php";
           <thead>
             <tr>
               <th class='centrar'>ID</th>
-              <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Email</th>
-              <th>Fecha de nacimiento</th>
+              <th>Foto noticia</th>
+              <th>Titulo</th>
+              <th>Fecha</th>
               <th class='centrar'>Acciones</th>
             </tr>
           </thead>
@@ -49,15 +48,14 @@ require "conexion.php";
             while ($fila = mysqli_fetch_assoc($resultado)):
             ?>
               <tr>
-                <td class='centrar'><?= $fila['id'] ?></td>
-                <td><?= $fila['nombre'] ?></td>
-                <td><?= $fila['apellido'] ?></td>
-                <td><?= $fila['correo'] ?></td>
-                <td><?= $fila['nacimiento'] ?></td>
+                <td class='centrar'><?= $fila['id_noticia'] ?></td>
+                <td class='centrar ancho_foto'><img src='<?= $fila['ruta_foto'] ?>' alt='<?= $fila['nombre_noticia'] ?>'></td>
+                <td class='ancho_nombre'><?= $fila['nombre_noticia'] ?></td>
+                <td><?= $fila['fecha_noticia'] ?></td>
                 <td class='centrar'>
-                  <a href='eliminar_usuario.php?id=<?= $fila['id'] ?>' onclick='return confirmarEliminar();' class='eliminar'><i class='fas fa-trash'></i></a>
-                  <a href='editar_usuario.php?id=<?= $fila['id'] ?>' class='editar'><i class='fas fa-edit'></i></a>
-                  <a href='ver_usuario.php?id=<?= $fila['id'] ?>' class='ver'><i class='fas fa-eye'></i></a>
+                  <a href='eliminar_post.php?id=<?= $fila['id_noticia'] ?>' onclick='return confirmarEliminar();' class='eliminar'><i class='fas fa-trash'></i></a>
+                  <a href='editar_post.php?id=<?= $fila['id_noticia'] ?>' class='editar'><i class='fas fa-edit'></i></a>
+                  <a href='ver_post.php?id=<?= $fila['id_noticia'] ?>' class='ver'><i class='fas fa-eye'></i></a>
                 </td>
               </tr>
             <?php
@@ -81,6 +79,6 @@ require "conexion.php";
 
 <script>
   function confirmarEliminar() {
-    return confirm("¿Estás seguro de que deseas eliminar este usuario?");
+    return confirm("¿Estás seguro de que deseas eliminar esta noticia?");
   }
 </script>

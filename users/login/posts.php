@@ -24,24 +24,24 @@ require 'seguridad.php';
       <form action="agregar_post.php" method="post" enctype="multipart/form-data" id="frmPost" class="form">
         <div class="fila">
           <div class="columna">
-            <label for="nombreNoticia">Nombre de la noticia:</label>
-            <input type="text" id="nombreNoticia" name="nombreNoticia" placeholder="Introduzca el nombre de la noticia">
+            <label for="nombre_noticia">Nombre de la noticia:</label>
+            <input type="text" id="nombre_noticia" name="nombre_noticia" placeholder="Introduzca el nombre de la noticia">
           </div>
         </div>
         <div class="fila">
           <div class="columna">
-            <label for="fechaNoticia">Fecha de la noticia</label>
-            <input type="date" id="fechaNoticia" name="fechaNoticia">
+            <label for="fecha_noticia">Fecha de la noticia</label>
+            <input type="date" id="fecha_noticia" name="fecha_noticia">
           </div>
           <div class="columna">
-            <label for="fotoNoticia">Imagen de la noticia:</label>
-            <input type="file" id="fotoNoticia" name="fotoNoticia">
+            <label for="foto_noticia">Imagen de la noticia:</label>
+            <input type="file" id="foto_noticia" name="foto_noticia">
           </div>
         </div>
         <div class="fila">
           <div class="columna">
-            <label for="descripcionCorta">Descripcion corta de la noticia:</label>
-            <input type="text" id="descripcionCorta" name="descripcionCorta" placeholder="Introduzca una descripcion corta de la noticia">
+            <label for="descripcion_corta">Descripcion corta de la noticia:</label>
+            <input type="text" id="descripcion_corta" name="descripcion_corta" placeholder="Introduzca una descripcion corta de la noticia">
           </div>
         </div>
         <div class="fila">
@@ -66,10 +66,10 @@ require 'seguridad.php';
     event.preventDefault(); // Evita el envío por defecto
 
     // Obtener los valores de los campos
-    const nombreNoticia = document.getElementById("nombreNoticia");
-    const fechaNoticia = document.getElementById("fechaNoticia");
-    const fotoNoticia = document.querySelector("input[type='file']");
-    const descripcionCorta = document.getElementById("descripcionCorta");
+    const nombre_noticia = document.getElementById("nombre_noticia");
+    const fecha_noticia = document.getElementById("fecha_noticia");
+    const foto_noticia = document.querySelector("input[type='file']");
+    const descripcion_corta = document.getElementById("descripcion_corta");
     const descripcionLarga = CKEDITOR.instances.editor1.getData().trim();
 
     // Expresión regular para validar formatos de imagen permitidos
@@ -86,17 +86,17 @@ require 'seguridad.php';
     }
 
     // Validaciones
-    if (verificarCampo(nombreNoticia, "Por favor, introduzca el nombre de la noticia.")) return;
-    if (verificarCampo(fechaNoticia, "Por favor, seleccione la fecha de la noticia.")) return;
-    if (fotoNoticia.files.length === 0) {
+    if (verificarCampo(nombre_noticia, "Por favor, introduzca el nombre de la noticia.")) return;
+    if (verificarCampo(fecha_noticia, "Por favor, seleccione la fecha de la noticia.")) return;
+    if (foto_noticia.files.length === 0) {
       alert("Por favor, seleccione una imagen para la noticia.");
       return;
     }
-    //if (!imagenRegex.test(fotoNoticia.files[0].name)) {
+    //if (!imagenRegex.test(foto_noticia.files[0].name)) {
     //  alert("Por favor, suba una imagen válida en formato JPG, JPEG o PNG.");
     //  return;
     //}
-    if (verificarCampo(descripcionCorta, "Por favor, introduzca una descripción corta.")) return;
+    if (verificarCampo(descripcion_corta, "Por favor, introduzca una descripción corta.")) return;
     if (descripcionLarga === "") {
       alert("Por favor, introduzca una descripción larga.");
       return;

@@ -404,3 +404,15 @@ hr {
   color: var(--color11);
   font-size: 0.8em;
 }
+
+.ancho_nombre {
+  width: 35%;
+}
+
+.ancho_foto {
+  width: 25%;
+}
+
+.ancho_foto img {
+  width: 90%;
+} 

@@ -26,23 +26,23 @@ require 'conexion.php';
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
           $id_usuario = mysqli_real_escape_string($conectar, $_GET['id']);
 
-          $verusuario = "SELECT nombre, apellido, correo, contra, nacimiento FROM usuarios WHERE id = '$id_usuario'";
+          $verusuario = "SELECT nombre_usuario, apellido_usuario, correo_usuario, contra_usuario, nacimiento_usuario FROM usuarios WHERE id_usuario = '$id_usuario'";
           $resultado = mysqli_query($conectar, $verusuario);
 
           if ($fila = $resultado->fetch_assoc()) {
         ?>
             <div class="info_usuario">
               <p><strong>Nombre del usuario:</strong></p>
-              <p><?php echo htmlspecialchars($fila["nombre"] . " " . $fila["apellido"]); ?></p>
+              <p><?php echo htmlspecialchars($fila["nombre_usuario"] . " " . $fila["apellido_usuario"]); ?></p>
               <hr>
               <p><strong>Correo:</strong></p>
-              <p><?php echo htmlspecialchars($fila["correo"]); ?></p>
+              <p><?php echo htmlspecialchars($fila["correo_usuario"]); ?></p>
               <hr>
               <p><strong>Contraseña:</strong></p>
-              <p><?php echo htmlspecialchars($fila["contra"]); ?></p>
+              <p><?php echo htmlspecialchars($fila["contra_usuario"]); ?></p>
               <hr>
               <p><strong>Fecha de Nacimiento:</strong></p>
-              <p><?php echo htmlspecialchars($fila["nacimiento"]); ?></p>
+              <p><?php echo htmlspecialchars($fila["nacimiento_usuario"]); ?></p>
               <hr>
             </div>
 

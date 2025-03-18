@@ -26,7 +26,7 @@ require "conexion.php";
 
       <?php
       // Realizamos la consulta a la base de datos
-      $datos = "SELECT * FROM usuarios ORDER BY id ASC";
+      $datos = "SELECT * FROM usuarios ORDER BY id_usuario ASC";
       $resultado = mysqli_query($conectar, $datos);
       ?>
 
@@ -49,15 +49,15 @@ require "conexion.php";
             while ($fila = mysqli_fetch_assoc($resultado)):
             ?>
               <tr>
-                <td class='centrar'><?= $fila['id'] ?></td>
-                <td><?= $fila['nombre'] ?></td>
-                <td><?= $fila['apellido'] ?></td>
-                <td><?= $fila['correo'] ?></td>
-                <td><?= $fila['nacimiento'] ?></td>
+                <td class='centrar'><?= $fila['id_usuario'] ?></td>
+                <td><?= $fila['nombre_usuario'] ?></td>
+                <td><?= $fila['apellido_usuario'] ?></td>
+                <td><?= $fila['correo_usuario'] ?></td>
+                <td><?= $fila['nacimiento_usuario'] ?></td>
                 <td class='centrar'>
-                  <a href='eliminar_usuario.php?id=<?= $fila['id'] ?>' onclick='return confirmarEliminar();' class='eliminar'><i class='fas fa-trash'></i></a>
-                  <a href='editar_usuario.php?id=<?= $fila['id'] ?>' class='editar'><i class='fas fa-edit'></i></a>
-                  <a href='ver_usuario.php?id=<?= $fila['id'] ?>' class='ver'><i class='fas fa-eye'></i></a>
+                  <a href='eliminar_usuario.php?id=<?= $fila['id_usuario'] ?>' onclick='return confirmarEliminar();' class='eliminar'><i class='fas fa-trash'></i></a>
+                  <a href='editar_usuario.php?id=<?= $fila['id_usuario'] ?>' class='editar'><i class='fas fa-edit'></i></a>
+                  <a href='ver_usuario.php?id=<?= $fila['id_usuario'] ?>' class='ver'><i class='fas fa-eye'></i></a>
                 </td>
               </tr>
             <?php
